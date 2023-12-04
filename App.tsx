@@ -5,24 +5,26 @@
 import '@tamagui/core/reset.css'
 import { Button, TamaguiProvider, Stack, useTheme, Form, YStack, Input } from 'tamagui'
 import config from './tamagui.config'
+import PrimaryButton from './src/components/buttons/PrimaryButton'
+import DefaultInput from './src/components/inputs/DefaultInput'
 export default function App() {
 
   const theme = useTheme()
   return (
 
     <TamaguiProvider config={config}>
-      <Stack flex={1} p={15} bg="$blue10">
-        <Form onSubmit={() => alert('Weee')}>
+      <Stack flex={1} p='$4' bg="$background">
+        <Form onSubmit={() => { alert('lalala') }}>
           <YStack>
             <Stack p={4}>
-              <Input size="$4" borderWidth={2} placeholder='Login' />
+              <DefaultInput placeholder='Login' mode='email' secure={false} />
             </Stack>
             <Stack p={4}>
-              <Input size="$4" borderWidth={2} placeholder='Senha' />
+              <DefaultInput placeholder='Senha' secure={true} />
             </Stack>
           </YStack>
-          <Form.Trigger asChild >
-            <Button m={4} bg={'$gray12'} color={'$color.gray1Light'}>Entrar</Button>
+          <Form.Trigger justifyContent='center'>
+            <PrimaryButton size={'$15'} title='Entrar' />
           </Form.Trigger>
         </Form>
       </Stack>
